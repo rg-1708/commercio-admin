@@ -10,32 +10,32 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { DataTable } from "@/components/ui/data-table";
 
-import { SizeColumn, columns } from "./columns";
+import { ColorColumn, columns } from "./columns";
 
-interface SizesClientProps {
-  data: SizeColumn[];
+interface ColorsClientProps {
+  data: ColorColumn[];
 }
 
-export const SizesClient: React.FC<SizesClientProps> = ({ data }) => {
+export const ColorsClient: React.FC<ColorsClientProps> = ({ data }) => {
   const router = useRouter();
   const params = useParams();
   return (
     <>
       <div className="flex items-center justify-between">
         <Heading
-          title={`Sizes (${data.length})`}
-          description="Manage sizes for your store"
+          title={`Color (${data.length})`}
+          description="Manage colors for your store"
         />
-        <Button onClick={() => router.push(`/${params.storeId}/sizes/new`)}>
+        <Button onClick={() => router.push(`/${params.storeId}/colors/new`)}>
           <Plus className="h-4 w-4 mr-2" />
           Add new
         </Button>
       </div>
       <Separator />
       <DataTable columns={columns} data={data} searchKey="name" />
-      <Heading title="Api" description="Api calls for sizes" />
+      <Heading title="Api" description="Api calls for colors" />
       <Separator />
-      <ApiList entityName="sizes" entityIdName="sizeId" />
+      <ApiList entityName="colors" entityIdName="colorId" />
     </>
   );
 };
